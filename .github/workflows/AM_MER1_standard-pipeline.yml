@@ -1,0 +1,35 @@
+name: MER1 Pipeline2
+
+on:
+  workflow_dispatch: null
+  push:
+    paths-ignore:
+      - .github/workflows/**
+      - renovate.json
+      - README.md
+    branches:
+      - main
+      - develop
+      - feat/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          echo 'Building the project...'
+      - name: Test
+        run: |
+          echo 'Running tests...'
+      - name: Code Quality
+        run: |
+          echo 'Checking code quality...'
+      - name: Security Scanning
+        run: |
+          echo 'Running security scans...'
+      - name: Build Container
+        run: |
+          echo 'Building Docker container...'
