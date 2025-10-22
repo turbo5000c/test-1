@@ -17,7 +17,10 @@ jobs:
         with:
           name: my-app
           path: ./
-
+      - name: Build summary
+        run: echo 'Build successful'
+      - name: Verbose output
+        run: echo 'Build finished successfully'
   package:
     runs-on: ubuntu-latest
     needs: build
@@ -28,4 +31,6 @@ jobs:
           name: my-app
           path: ./
       - name: Build Docker image
-        run: docker build . -t my-container-image
+        run: |
+          echo 'Building Docker image...'
+          docker build . -t my-container-image
